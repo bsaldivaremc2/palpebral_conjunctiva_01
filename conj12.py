@@ -142,8 +142,10 @@ class ConjFeat:
         """
         self.calc_all_features(v)
         od={}
-        od['PVM']=self.PVM
-        od['PMV_12']=self.PVM_12,
+        for _ in enumerate(self.PVM.flatten()):
+            od['PVM-'+self.color[_[0]]]=_[1]
+        for _ in enumerate(self.PVM_12.flatten()):
+            od['PVM_12_'+str(_[0])]=_[1]
         od['Brightness']=self.brightness
         od['HHR']=self.HHR
         od['Entropy']=self.entropy
